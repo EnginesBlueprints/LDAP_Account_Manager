@@ -15,12 +15,76 @@
         "level": "alpha",
         "patch": 0
       }
-    }
+    },
+    "software": {
+      "display": {
+        "title": "LDAP Account Manager",
+        "label": "ldapaccounts",
+        "url": "https://www.ldap-account-manager.org"
+      },
+      "license": {
+        "label": "GNU General Public License, version 2",
+        "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+      }
+    },
+    "timestamp": "2017-07-31T12:30:33+10:00"
   },
   "software": {
     "base": {
+      "name": "ldapaccounts",
+      "framework": "apache_php",
       "deployment_type": "web",
-      "http_protocol": "https_and_http"
-    }
+      "http_protocol": "https_and_http",
+      "memory": {
+        "required": 64,
+        "recommended": 96
+      }
+    },
+    "installed_packages": [
+      {
+        "name": "ldap-account-manager-6.0.1.tar.bz2",
+        "source_url": "https://jaist.dl.sourceforge.net/project/lam/LAM/6.0.1/ldap-account-manager-6.0.1.tar.bz2",
+        "destination": "./",
+        "extraction_command": "tar xjf ",
+        "path_to_extracted": "ldap-account-manager-6.0.1"
+      }
+    ],
+    "required_modules": [
+      {
+        "name": "net-ldap",
+        "type": "php",
+        "os_package": "php-net-ldap3"
+      }
+    ],
+    "service_configurations": [
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "filesystem/local/filesystem",
+        "variables": {
+          "service_name": "_Engines_Builder(engine_name)",
+          "volume_src": "",
+          "engine_path": " /home/fs/persistence",
+          "permissions": "rw",
+          "user": "_Engines_Builder(data_uid)",
+          "group": "_Engines_Builder(data_gid)"
+        }
+      }
+    ],
+    "file_write_permissions": [
+      {
+        "path": "sess",
+        "recursive": true
+      },
+      {
+        "path": "tmp",
+        "recursive": true
+      },
+      {
+        "path": "tmp/internal"
+      },
+      {
+        "path": "config"
+      }
+    ]
   }
 }
