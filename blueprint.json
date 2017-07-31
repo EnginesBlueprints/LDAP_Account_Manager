@@ -27,7 +27,7 @@
         "url": "http://www.gnu.org/licenses/gpl-2.0.html"
       }
     },
-    "timestamp": "2017-07-31T12:32:30+10:00"
+    "timestamp": "2017-07-31T12:35:52+10:00"
   },
   "software": {
     "base": {
@@ -51,9 +51,14 @@
     ],
     "required_modules": [
       {
-        "name": "net-ldap",
+        "name": "net-ldap3",
         "type": "php",
         "os_package": "php-net-ldap3"
+      },
+      {
+        "name": "zip",
+        "type": "php",
+        "os_package": "php-zip"
       }
     ],
     "service_configurations": [
